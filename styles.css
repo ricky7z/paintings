@@ -316,3 +316,11 @@ body, html {
 * {
     box-sizing: border-box;
 }
+
+
+
+/* CSS for light mode video inversion */
+.video-inverted {
+    filter: invert(100%) brightness(150%);
+    transition: filter 0.5s ease; /* Smooth transition */
+}
