@@ -191,3 +191,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    const video = document.querySelector('.hero-video');
+
+    // Function to apply the theme based on the user's preference
+    function applyTheme() {
+        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = localStorage.getItem('theme') || (prefersDarkMode ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+        toggleButton.checked = theme === 'dark';
+        updateVideoFilter(theme);
+    }
+
+    // Function to update video filter based on the theme
+    function updateVideoFilter(theme) {
+        if (theme === 'dark') {
+            video.classList.remove('video-inverted');
+        } else {
+            video.classList.add('video-inverted');
+        }
+    }
+
+    // Apply the initial theme
+    applyTheme();
+
+    // Toggle dark mode when the switch is changed
+    toggleButton.addEventListener('change', () => {
+        const newTheme = toggleButton.checked ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateVideoFilter(newTheme);
+    });
+
+    // Update the theme when system preference changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        const newTheme = e.matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateVideoFilter(newTheme);
+        toggleButton.checked = newTheme === 'dark';
+    });
+});
