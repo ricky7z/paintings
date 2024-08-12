@@ -83,6 +83,22 @@ nav ul li a.active {
     text-align: center;
     color: #fff;
 }
+/* Hero Section */
+.hero-content h1 {
+    font-size: 5em; /* Increase the size as needed */
+    margin: 0;
+    padding: 0;
+    color: var(--hero-text-color);
+    font-family: 'Abril Fatface', cursive; /* Bold and eye-catching font for the hero section */
+}
+/* Hero Section */
+.hero-content p {
+    font-size: 1em; /* Increase the size as needed */
+    margin: 1;
+    padding: 0;
+    color: var(--hero-text-color);
+    font-family: 'Ariel', cursive; /* Bold and eye-catching font for the hero section */
+}
 
 /* Button */
 .btn {
@@ -94,6 +110,7 @@ nav ul li a.active {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin: 10px;
 }
 
 .btn:hover {
