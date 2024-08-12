@@ -91,3 +91,103 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+
+// Function to toggle dark mode
+function toggleDarkMode() {
+    const isDarkMode = document.body.getAttribute('data-theme') === 'dark';
+    const video = document.querySelector('.hero-video');
+
+    if (isDarkMode) {
+        video.classList.remove('video-inverted');
+    } else {
+        video.classList.add('video-inverted');
+    }
+}
+
+// Event listener for dark mode toggle
+document.getElementById('dark-mode-toggle').addEventListener('change', function() {
+    if (this.checked) {
+        document.body.setAttribute('data-theme', 'dark');
+    } else {
+        document.body.setAttribute('data-theme', 'light');
+    }
+    toggleDarkMode();
+});
+
+// Initialize dark mode state
+toggleDarkMode();
+
+
+// Function to apply the theme based on the user's preference
+function applyTheme() {
+    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDarkMode) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+}
+
+// Apply the theme on page load
+document.addEventListener('DOMContentLoaded', applyTheme);
+
+// Optional: Add a listener to update the theme if the system preference changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (e.matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    const video = document.querySelector('.hero-video');
+
+    // Apply the initial theme
+    const applyTheme = () => {
+        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = localStorage.getItem('theme') || (prefersDarkMode ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'dark') {
+            video.classList.remove('video-inverted');
+            toggleButton.checked = true;
+        } else {
+            video.classList.add('video-inverted');
+            toggleButton.checked = false;
+        }
+    };
+
+    applyTheme();
+
+    // Update the theme and video inversion on toggle
+    const toggleDarkMode = () => {
+        const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDarkMode) {
+            video.classList.remove('video-inverted');
+        } else {
+            video.classList.add('video-inverted');
+        }
+    };
+
+    // Listen to changes in the dark mode toggle switch
+    toggleButton.addEventListener('change', () => {
+        const theme = toggleButton.checked ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        toggleDarkMode();
+    });
+
+    // Listen for changes in system theme preference
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        const theme = e.matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'dark') {
+            video.classList.remove('video-inverted');
+        } else {
+            video.classList.add('video-inverted');
+        }
+    });
+});
+
