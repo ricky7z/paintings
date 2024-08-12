@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
   
     const paintings = [
       { title: 'Sunset Bliss', image: '1.jpeg', Description: 'Generic Desvription', price: '$' },
-      { title: 'Ocean Waves', image: '2.jpg', Description: 'Generic Desvription', price: '$' },
-      { title: 'Forest Dream', image: '3.jpg', Description: 'Generic Desvription', price: '$' },
-      { title: 'Abstract Colors', image: '4.jpg', Description: 'Generic Desvription', price: '$' },
-      { title: 'Sunset Bliss', image: '5.jpg', Description: 'Generic Desvription', price: '$' },
-      { title: 'Ocean Waves', image: '6.jpg', Description: 'Generic Desvription', price: '$' },
+      { title: 'Ocean Waves', image: '2.jpeg', Description: 'Generic Desvription', price: '$' },
+      { title: 'Forest Dream', image: '3.jpeg', Description: 'Generic Desvription', price: '$' },
+      { title: 'Abstract Colors', image: '4.jpeg', Description: 'Generic Desvription', price: '$' },
+      { title: 'Sunset Bliss', image: '5.jpeg', Description: 'Generic Desvription', price: '$' },
+      { title: 'Ocean Waves', image: '6.jpeg', Description: 'Generic Desvription', price: '$' },
       //{ title: 'Forest Dream', image: 'genimg.jpeg', price: 'Generic Description' },
       //{ title: 'Abstract Colors', image: 'genimg.jpeg', price: '$220' },
      // { title: 'Generated Art', image: 'genimg.jpeg', price: '$350' }, 
