@@ -31,6 +31,8 @@ header {
     background-color: var(--secondary-color);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    position: relative;
+    z-index: 2; /* Ensure it sits above the video */
 }
 
 /* Navigation */
@@ -54,19 +56,30 @@ nav ul li a.active {
 
 /* Hero Section */
 .hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 1; /* Ensure it sits below the content */
+}
+
+.hero-video {
+    position: fixed; /* Fixed position */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Ensure it sits behind the content */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Ensure it sits above the video */
     text-align: center;
-    padding: 100px 20px;
-    background: var(--secondary-color);
-}
-
-.hero h1 {
-    font-size: 3em;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    font-size: 1.5em;
-    margin-bottom: 20px;
+    color: #fff;
 }
 
 /* Button */
@@ -91,6 +104,7 @@ nav ul li a.active {
     background: var(--secondary-color);
     max-width: 1200px;
     margin: 0 auto;
+    z-index: 2; /* Ensure it sits above the video */
 }
 
 .highlighted-gallery h2 {
@@ -266,35 +280,39 @@ input:checked + .slider {
 input:checked + .slider:before {
     transform: translateX(26px);
 }
-/* Add this to your CSS */
 
 body, header, footer, .gallery-item, .enhanced-form {
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 
-.hero {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  
-  .hero-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-  }
-  
-  .hero-content {
-    position: relative;
-    z-index: 1;
+
+/* Footer */
+footer {
     text-align: center;
-    color: #fff;
-  }
+    padding: 20px;
+    background-color: var(--secondary-color);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    position: fixed; /* Change from sticky to relative */
+    margin-top: 20px; /* Ensure there's space above it */
+}
+
+
+/* Prevent horizontal overflow */
+body, html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.hero, .highlighted-gallery, footer {
+    box-sizing: border-box;
+}
+
+.hero-video {
+    box-sizing: border-box; /* Ensure the video fits correctly */
+}
+
+* {
+    box-sizing: border-box;
+}
