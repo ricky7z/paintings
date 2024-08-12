@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gallery = document.querySelector('.gallery-grid');
   
     const paintings = [
-      { title: 'Sunset Bliss', image: '1.JPG', Description: 'Generic Desvription', price: '$' },
+      { title: 'Sunset Bliss', image: '7.jpeg', Description: 'Generic Desvription', price: '$' },
       { title: 'Ocean Waves', image: '2.jpg', Description: 'Generic Desvription', price: '$' },
       { title: 'Forest Dream', image: '3.jpg', Description: 'Generic Desvription', price: '$' },
       { title: 'Abstract Colors', image: '4.jpg', Description: 'Generic Desvription', price: '$' },
